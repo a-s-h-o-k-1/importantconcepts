@@ -1,6 +1,9 @@
 package com.learning.java.interview;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class EqualsAndHashCodeDemo {
 
@@ -21,7 +24,7 @@ public class EqualsAndHashCodeDemo {
 
         //creating two Students
         Student ashok = new Student(1, "ashok");
-        Student afzal = new Student(2, "ashok");
+        Student afzal = new Student(1, "ashok");
 
         //checking equals
 //        System.out.println(ashok.equals(afzal));
@@ -30,8 +33,15 @@ public class EqualsAndHashCodeDemo {
         //checking hashcode
         System.out.println("ashok hashcode: " + ashok.hashCode());
         System.out.println("afzal hashcode: " + afzal.hashCode());
+
+        //checking hashset
+        Set<Student> friends = new HashSet<>(Arrays.asList(ashok, afzal));
+
+        System.out.println(friends);
+
     }
 }
+
 class Student extends Object {
     private int id;
     private String name;
@@ -52,6 +62,14 @@ class Student extends Object {
     @Override
     public int hashCode() {
         return Objects.hash(id, name);
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
 
